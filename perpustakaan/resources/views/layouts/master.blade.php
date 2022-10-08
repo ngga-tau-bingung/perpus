@@ -80,6 +80,8 @@
                         <a class="collapse-item" href="/buku/index">Buku</a>
                         <a class="collapse-item" href="/peminjaman/index">Peminjaman</a>
                         <a class="collapse-item" href="/pengarang">Pengarang</a>
+                        <a class="collapse-item" href="/penerbit">penerbit</a>
+                        <a class="collapse-item" href="/category">Category</a>
                     </div>
                 </div>
             </li>
