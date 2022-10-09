@@ -9,17 +9,24 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+<<<<<<< HEAD
     <title>{{$title}} | Library</title>
+=======
+    <title>SB Admin 2 - @yield('title')</title>
+>>>>>>> 600c995 (absen)
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('sbadmin2/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="{{asset('sbadmin2/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
+    <!-- Custom styles for this page -->
+    <link href="{{asset('sbadmin2/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+
+    <!-- Table Style -->
+    @stack('style')
 </head>
 
 <body id="page-top">
@@ -66,7 +73,11 @@
                 </a>
                 <div id="collapseone" class="collapse" aria-labelledby="headingone" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
+<<<<<<< HEAD
                         <a class="collapse-item" href="{{url('admin/users')}}">Daftar User</a>
+=======
+                        <a class="collapse-item" href="/user">Daftar User</a>
+>>>>>>> 600c995 (absen)
                     </div>
                 </div>
             </li>
@@ -80,30 +91,26 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/buku/index">Buku</a>
-                        <a class="collapse-item" href="/peminjaman/index">Peminjaman</a>
                         <a class="collapse-item" href="/pengarang">Pengarang</a>
-                        <a class="collapse-item" href="/penerbit">penerbit</a>
+                        <a class="collapse-item" href="/penerbit">Penerbit</a>
                         <a class="collapse-item" href="/category">Category</a>
                     </div>
                 </div>
             </li>
+<<<<<<< HEAD
 
+=======
+            <!-- Heading 2 -->
+            <div class="sidebar-heading">
+                MANAJEMEN BUKU
+            </div>
+            
+>>>>>>> 600c995 (absen)
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
+                <a class="nav-link" href="/peminjaman/index">
+                    <i class="fas fa-fw fa fa-folder"></i>
+                    <span>Data Peminjaman</span></a>
             </li>
 
             <!-- Divider -->
@@ -330,7 +337,12 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
+<<<<<<< HEAD
                 <div class="container">
+=======
+                <div class="container-fluid">
+                 
+>>>>>>> 600c995 (absen)
 
                     <!-- Page Heading -->
                     @yield('content')
@@ -392,6 +404,22 @@
     <!-- Custom scripts for all pages-->
     <script src="{{asset('sbadmin2/js/sb-admin-2.min.js')}}"></script>
 
+    <!-- Page level plugins -->
+    <script src="{{asset('sbadmin2/vendor/chart.js/Chart.min.js')}}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{asset('sbadmin2/js/demo/datatables-demo.js')}}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{{asset('sbadmin2/vendor/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('sbadmin2/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+    
+    <!-- script tambahan sweet alert, bukan dari bawaan sb-admin-2 -->
+    <script src="{{asset('sbadmin2/js/swal.min.js')}}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{asset('sbadmin2/js/demo/datatables-demo.js')}}"></script>
+    @stack('script')
 </body>
 
 </html>

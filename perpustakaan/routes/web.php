@@ -7,6 +7,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PengarangController;
 use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\UserController;
 
 Route::view('/','welcome');
 
@@ -28,7 +30,6 @@ Route::prefix('pengarang')->middleware('auth')->group(function(){
 
 Route::get('/buku/index', [App\Http\Controllers\BukuController::class, 'index'])->name('buku.index');
 
-Route::get('/peminjaman/index', [App\Http\Controllers\PeminjamanController::class, 'index'])->name('Peminjaman.index');
 
 /* route penerbit done */
 Route::get('/penerbit', [PenerbitController::class, 'index'])->name('penerbit.index');
@@ -46,5 +47,17 @@ Route::get('/category/{id}/edit', [CategoryController::class, 'show'])->name('ca
 Route::put('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
 Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
+<<<<<<< HEAD
 /* route admin users */
 Route::resource('admin/users', UsersController::class)->middleware(['auth','admin']);
+=======
+//route peminjaman
+Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman.index');
+Route::post('/peminjaman/create', [PeminjamanController::class, 'store'])->name('peminjaman.store');
+Route::get('/peminjaman/{id}', [PeminjamanController::class, 'show'])->name('peminjaman.show');
+Route::put('/peminjaman/{id}', [PeminjamanController::class, 'update'])->name('peminjaman.update');
+Route::delete('/peminjaman/{id}', [PeminjamanController::class, 'destroy'])->name('peminjaman.destroy');
+
+//route user
+Route::get('/user', [UserController::class, 'index'])->name('user.index');
+>>>>>>> 600c995 (absen)
