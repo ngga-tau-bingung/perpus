@@ -10,7 +10,7 @@ class PengarangController extends Controller
     public function index()
     {
         return view('pengarang.tampil', [
-            'pengarangs'=>Pengarang::orderBy('id', 'DESC')->paginate(5),
+            'pengarangs'=>Pengarang::orderBy('id', 'DESC')->paginate(),
         ]);
     }
 
@@ -24,6 +24,7 @@ class PengarangController extends Controller
         $validasi = $request->validate(["nama_pengarang"=> "required"]);
         Pengarang::create($validasi);
         return redirect()->route('pengarang.index')->with('success',"Created Successfully");
+        
     }
 
     public function edit($id)

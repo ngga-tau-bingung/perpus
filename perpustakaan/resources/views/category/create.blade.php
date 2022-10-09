@@ -1,9 +1,18 @@
-@extends('layouts.master', ["title"=>"Create category"])
+@extends('layouts.master')
 
+@section('title')
+    Tambah Data Category
+@endsection
 @section('content')
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
+    <!-- Begin Page Content -->
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Tambah Data Category</h1>
+         
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Tambah Category</h6>
                 <div class="card-body">
                     <form action="{{route('category.store')}}" method="post" class="d-inline">
                         @csrf
@@ -17,5 +26,4 @@
                 </div>
             </div>
         </div>
-    </div>
 @endsection

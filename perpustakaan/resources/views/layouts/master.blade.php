@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{{$title}} | Library</title>
+    <title>@yield('title') | Library</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('sbadmin2/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -91,7 +91,7 @@
             </li>
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="/peminjaman/index">
+                <a class="nav-link" href="/peminjaman">
                     <i class="fas fa-fw fa fa-folder"></i>
                     <span>Data Peminjaman</span></a>
             </li>

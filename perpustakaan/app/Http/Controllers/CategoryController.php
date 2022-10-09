@@ -10,7 +10,7 @@ class CategoryController extends Controller
     public function index()
     {
         $data = [
-            'categorys'=>Category::orderBy('id', 'DESC')->paginate(5), 
+            'categorys'=>Category::orderBy('id', 'DESC')->paginate(), 
             'title'=>'Category'
         ];
         return view('category.tampil', $data);

@@ -1,9 +1,18 @@
-@extends('layouts.master', ["title"=>"Create category"])
+@extends('layouts.master')
 
+@section('title')
+    Edit Data Category
+@endsection
 @section('content')
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
+    <!-- Begin Page Content -->
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Edit Data Category</h1>
+         
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Edit Data Category</h6>
                 <div class="card-body">
                     <form action="{{url('category/'.$category->id)}}" method="post" class="d-inline">
                         @method ("PUT")
@@ -18,5 +27,5 @@
                 </div>
             </div>
         </div>
-    </div>
+
 @endsection
