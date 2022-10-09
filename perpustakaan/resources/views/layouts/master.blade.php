@@ -82,7 +82,7 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/buku/index">Buku</a>
+                        <a class="collapse-item" href="/book">Buku</a>
                         <a class="collapse-item" href="/pengarang">Pengarang</a>
                         <a class="collapse-item" href="/penerbit">Penerbit</a>
                         <a class="collapse-item" href="/category">Category</a>

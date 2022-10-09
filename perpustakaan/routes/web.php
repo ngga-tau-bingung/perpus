@@ -8,6 +8,7 @@ use App\Http\Controllers\PengarangController;
 use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
 
 Route::view('/','welcome');
@@ -56,3 +57,11 @@ Route::delete('/peminjaman/{id}', [PeminjamanController::class, 'destroy'])->nam
 
 //route user
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
+
+//route book
+Route::get('/book', [BookController::class, 'index'])->name('book.index');
+Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
+Route::post('/book/create', [BookController::class, 'store'])->name('book.store');
+Route::get('/book/{id}', [BookController::class, 'show'])->name('book.show');
+Route::put('/book/{id}', [BookController::class, 'update'])->name('book.update');
+Route::delete('/book/{id}', [BookController::class, 'destroy'])->name('book.destroy');
