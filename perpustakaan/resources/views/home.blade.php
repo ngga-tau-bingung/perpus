@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master',['title' => 'Home pages'])
 
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">

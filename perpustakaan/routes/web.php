@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
@@ -13,21 +14,27 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-//route pengarang
-Route::get('/pengarang', [PengarangController::class, 'index'])->name('pengarang.index');
-Route::post('/pengarang/create', [PengarangController::class, 'store'])->name('pengarang.store');
-Route::get('/pengarang/{id}', [PengarangController::class, 'show'])->name('pengarang.show');
-Route::put('/pengarang/{id}', [PengarangController::class, 'update'])->name('pengarang.update');
-Route::delete('/pengarang/{id}', [PengarangController::class, 'destroy'])->name('pengarang.destroy');
+/* route pengarang done */
+Route::prefix('pengarang')->middleware('auth')->group(function(){
+    Route::controller(PengarangController::class)->group(function(){
+        Route::get('/', 'index')->name('pengarang.index');
+        Route::get('/create', 'create')->name('pengarang.create');
+        Route::post('/create', 'store')->name('pengarang.store');
+        Route::get('/{id}/edit', 'edit')->name('pengarang.edit');
+        Route::put('/{id}', 'update')->name('pengarang.update');
+        Route::delete('/{id}', 'destroy')->name('pengarang.destroy');
+    });
+});
 
 Route::get('/buku/index', [App\Http\Controllers\BukuController::class, 'index'])->name('buku.index');
 
 Route::get('/peminjaman/index', [App\Http\Controllers\PeminjamanController::class, 'index'])->name('Peminjaman.index');
 
-//route penerbit
+/* route penerbit done */
 Route::get('/penerbit', [PenerbitController::class, 'index'])->name('penerbit.index');
+Route::get('/penerbit/create', [PenerbitController::class, 'create'])->name('penerbit.create');
 Route::post('/penerbit/create', [PenerbitController::class, 'store'])->name('penerbit.store');
-Route::get('/penerbit/{id}', [PenerbitController::class, 'show'])->name('penerbit.show');
+Route::get('/penerbit/{id}/edit', [PenerbitController::class, 'edit'])->name('penerbit.edit');
 Route::put('/penerbit/{id}', [PenerbitController::class, 'update'])->name('penerbit.update');
 Route::delete('/penerbit/{id}', [PenerbitController::class, 'destroy'])->name('penerbit.destroy');
 
@@ -37,3 +44,6 @@ Route::post('/category/create', [CategoryController::class, 'store'])->name('cat
 Route::get('/category/{id}', [CategoryController::class, 'show'])->name('category.show');
 Route::put('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
 Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+/* route admin users */
+Route::resource('admin/users', UsersController::class)->middleware(['auth','admin']);

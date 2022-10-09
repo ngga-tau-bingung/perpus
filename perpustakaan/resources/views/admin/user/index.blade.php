@@ -1,40 +1,36 @@
-@extends('layouts.master')
-
-@section('title')
-    Penerbit
-@endsection
+@extends('layouts.master', ['title' => 'Admin update'])
 
 @section('content')
 
-<a href="/penerbit/create" class="btn btn-primary btn-sm my-3">create</a>
-@if(session()->has('success'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <a href="{{url('admin/users/create')}}" class="btn btn-primary btn-sm my-3">Create New User</a>
+    @if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{session("success")}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-@endif
-<div class='table-responsive'>
+    @endif
+    <div class='table-responsive'>
 
     <table class="table table-bordered table-striped">
         <thead>
           <tr>
             <th scope="col">No</th>
-            <th scope="col">Id</th>
-            <th scope="col">Nama Penerbit</th>
+            <th scope="col">Nama Lengkap</th>
+            <th scope="col">Role</th>
             <th scope="col" class="text-center">Action</th>
           </tr>
         </thead>
         <tbody>
-            @forelse ($penerbits as $penerbit)
-              <tr>
+            @forelse ($users as $user)
+                <tr>
                 <td>{{$loop->iteration}}</td>
-                <td>{{$penerbit->id}}</td>
-                <td>{{$penerbit->nama_penerbit}}</td>
+                <td>{{$user->name}}</td>
+                <td>{{$user->role_as}}</td>
                  <td class="text-center">
-                     <a href="{{url('penerbit/'.$penerbit->id.'/edit')}}" class="btn btn-warning btn-sm">Edit</a>
-                     <form action="{{url('penerbit/'.$penerbit->id)}}" method="POST" class="d-inline">
+                     <a href="{{url('admin/users/'.$user->id.'/edit')}}" class="btn btn-warning btn-sm">Edit</a>
+                     <form action="{{url('admin/users/'.$user->id)}}" method="POST" class="d-inline">
                          @method('delete')
                          @csrf
                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are You Sure ?')">Delete</button>
@@ -48,7 +44,7 @@
             @endforelse
         </tbody>
       </table>
-    {{ $penerbits->links() }}
+        {{ $users->links() }}
 </div>
 
 @endsection
