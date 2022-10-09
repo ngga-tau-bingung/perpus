@@ -7,15 +7,14 @@
     <<!-- Begin Page Content -->
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Edit Data Buku Perpustakaan</h1>
+          <h1 class="h3 mb-2 text-gray-800">Tambah Data Buku Perpustakaan</h1>
          
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Edit Data Buku Perpustakaan</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Tambah Data Buku Perpustakaan</h6>
                 <div class="card-body">
-                    <form action="{{url('admin/users/'.$user->id)}}" method="post" class="d-inline">
-                        @method ("PUT")
+                    <form action="{{url('admin.store')}}" method="POST" class="d-inline">
                         @csrf
                         <div class="form-group">
                             <label for="nama">Nama Lengkap</label>
@@ -29,9 +28,9 @@
                                 <option value="users">Pegawai</option>
                             </select>
                         </div>
-                      <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                      <button type="submit" class="btn btn-primary btn-sm">Save</button>
                     </form>
-                    <a href="{{url('admin/users')}}" class="btn btn-warning btn-sm">Cancel</a>
+                    <a href="{{url('admin.index')}}" class="btn btn-warning btn-sm">Cancel</a>
                 </div>
             </div>
         </div>

@@ -69,11 +69,14 @@
                 </a>
                 <div id="collapseone" class="collapse" aria-labelledby="headingone" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{url('admin/users')}}">Daftar User</a>
+                        <a class="collapse-item" href="{{url('admin/index')}}">Daftar User</a>
                     </div>
                 </div>
             </li>
             @endcan
+            <div class="sidebar-heading">
+                Manajemen Buku
+            </div>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">

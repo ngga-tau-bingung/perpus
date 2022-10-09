@@ -53,8 +53,13 @@ Route::get('/peminjaman/{id}', [PeminjamanController::class, 'show'])->name('pem
 Route::put('/peminjaman/{id}', [PeminjamanController::class, 'update'])->name('peminjaman.update');
 Route::delete('/peminjaman/{id}', [PeminjamanController::class, 'destroy'])->name('peminjaman.destroy');
 
-//route user
-Route::get('/user', [UserController::class, 'index'])->name('user.index');
+//route Admin
+Route::get('/admin', [UserController::class, 'index'])->name('admin.index');
+Route::get('/admin/create', [UserController::class, 'create'])->name('admin.create');
+Route::post('/admin/create', [UserController::class, 'store'])->name('admin.store');
+Route::get('/admin/{id}/edit', [UserController::class, 'edit'])->name('admin.edit');
+Route::put('/admin/{id}', [UserController::class, 'update'])->name('admin.update');
+Route::delete('/admin/{id}', [UserController::class, 'destroy'])->name('admin.destroy');
 
 //route book
 Route::get('/book', [BookController::class, 'index'])->name('book.index');
