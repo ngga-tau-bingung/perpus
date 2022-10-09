@@ -1,9 +1,18 @@
-@extends('layouts.master', ["title"=>"Create book"])
+@extends('layouts.master')
 
+@section('title')
+   Edit Data Buku Perpustakaan
+@endsection
 @section('content')
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
+     <!-- Begin Page Content -->
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Edit Data Buku Perpustakaan</h1>
+         
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Edit Data Buku Perpustakaan</h6>
                 <div class="card-body">
                     <form action="{{route('book.update', ['id'=>$book->id])}}"  method="POST"  class="d-inline" enctype="multipart/form-data">
                         @method ("PUT")
@@ -53,5 +62,5 @@
                 </div>
             </div>
         </div>
-    </div>
+
 @endsection

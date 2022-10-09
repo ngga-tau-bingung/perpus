@@ -30,10 +30,6 @@ Route::prefix('pengarang')->middleware('auth')->group(function(){
 });
 
 
-/* route buku done */
-Route::get('/buku', [App\Http\Controllers\BukuController::class, 'index'])->name('buku.index');
-
-
 /* route penerbit done */
 Route::get('/penerbit', [PenerbitController::class, 'index'])->name('penerbit.index');
 Route::get('/penerbit/create', [PenerbitController::class, 'create'])->name('penerbit.create');

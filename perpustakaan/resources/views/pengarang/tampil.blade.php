@@ -60,7 +60,7 @@
                               </td>
                               </tr>
                               @empty
-                              <h1>Data Pengarang Kosong</h1>
+                              <h5>Data Pengarang Kosong</h5>
                             @endforelse
                       </tbody>
                 </table>
