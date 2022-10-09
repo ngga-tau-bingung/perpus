@@ -16,7 +16,7 @@
         @endif
         <div class="card">
                 <div class="card-body">
-                     <table class="table table-bordered table-striped">
+                     <table class="table table-bordered table-striped" id="dataTable" >
                         <thead>
                           <tr>
                             <th scope="col">No</th>
