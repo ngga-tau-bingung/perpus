@@ -10,6 +10,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PinjamController;
 
 Route::view('/','welcome');
 
@@ -68,3 +69,8 @@ Route::post('/book/create', [BookController::class, 'store'])->name('book.store'
 Route::get('/book/{id}/edit', [BookController::class, 'show'])->name('book.show');
 Route::put('/book/{id}', [BookController::class, 'update'])->name('book.update');
 Route::delete('/book/{id}', [BookController::class, 'destroy'])->name('book.destroy');
+
+//route pinjam
+Route::get('/pinjam', [PinjamController::class, 'index'])->name('pinjam.index');
+Route::get('/userpinjam/{id}', [PinjamController::class, 'userpinjam'])->name('pinjam.userpinjam');
+Route::post('/pinjam/{book_id}', [PinjamController::class, 'meminjam'])->name('pinjam.meminjam');
