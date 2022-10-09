@@ -9,11 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-<<<<<<< HEAD
     <title>{{$title}} | Library</title>
-=======
-    <title>SB Admin 2 - @yield('title')</title>
->>>>>>> 600c995 (absen)
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('sbadmin2/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -73,11 +69,7 @@
                 </a>
                 <div id="collapseone" class="collapse" aria-labelledby="headingone" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-<<<<<<< HEAD
                         <a class="collapse-item" href="{{url('admin/users')}}">Daftar User</a>
-=======
-                        <a class="collapse-item" href="/user">Daftar User</a>
->>>>>>> 600c995 (absen)
                     </div>
                 </div>
             </li>
@@ -97,15 +89,6 @@
                     </div>
                 </div>
             </li>
-<<<<<<< HEAD
-
-=======
-            <!-- Heading 2 -->
-            <div class="sidebar-heading">
-                MANAJEMEN BUKU
-            </div>
-            
->>>>>>> 600c995 (absen)
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="/peminjaman/index">
@@ -337,12 +320,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-<<<<<<< HEAD
                 <div class="container">
-=======
-                <div class="container-fluid">
-                 
->>>>>>> 600c995 (absen)
 
                     <!-- Page Heading -->
                     @yield('content')

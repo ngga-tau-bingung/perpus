@@ -47,10 +47,6 @@ Route::get('/category/{id}/edit', [CategoryController::class, 'show'])->name('ca
 Route::put('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
 Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
-<<<<<<< HEAD
-/* route admin users */
-Route::resource('admin/users', UsersController::class)->middleware(['auth','admin']);
-=======
 //route peminjaman
 Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman.index');
 Route::post('/peminjaman/create', [PeminjamanController::class, 'store'])->name('peminjaman.store');
@@ -60,4 +56,3 @@ Route::delete('/peminjaman/{id}', [PeminjamanController::class, 'destroy'])->nam
 
 //route user
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
->>>>>>> 600c995 (absen)
