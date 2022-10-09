@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
+
 @section('content')
 <div class="container">
+    <!-- Outer Row -->
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+      <div class="col-xl-10 col-lg-12 col-md-9">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -52,7 +55,7 @@
                         </div>
 
                         <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="col-md-9 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
@@ -62,12 +65,14 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
-                            </div>
+                                </div>
+                             </div>
+                         </form>
                         </div>
-                    </form>
+                     </div>
+                    </div>
+                  </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+              </div>
+
 @endsection

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{{$title}} | Library</title>
+    <title>@yield('title') | Library</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('sbadmin2/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -82,7 +82,7 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/buku/index">Buku</a>
+                        <a class="collapse-item" href="/buku">Buku</a>
                         <a class="collapse-item" href="/pengarang">Pengarang</a>
                         <a class="collapse-item" href="/penerbit">Penerbit</a>
                         <a class="collapse-item" href="/category">Category</a>
@@ -91,7 +91,7 @@
             </li>
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="/peminjaman/index">
+                <a class="nav-link" href="/peminjaman">
                     <i class="fas fa-fw fa fa-folder"></i>
                     <span>Data Peminjaman</span></a>
             </li>

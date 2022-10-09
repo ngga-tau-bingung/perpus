@@ -10,7 +10,7 @@ class PenerbitController extends Controller
     public function index()
     {
         return view('penerbit.tampil', [
-            'penerbits' => Penerbit::orderBy('id', 'DESC')->paginate(5),
+            'penerbits' => Penerbit::orderBy('id', 'DESC')->paginate(),
         ]);
     }
 

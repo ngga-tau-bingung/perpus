@@ -28,7 +28,9 @@ Route::prefix('pengarang')->middleware('auth')->group(function(){
     });
 });
 
-Route::get('/buku/index', [App\Http\Controllers\BukuController::class, 'index'])->name('buku.index');
+
+/* route buku done */
+Route::get('/buku', [App\Http\Controllers\BukuController::class, 'index'])->name('buku.index');
 
 
 /* route penerbit done */
