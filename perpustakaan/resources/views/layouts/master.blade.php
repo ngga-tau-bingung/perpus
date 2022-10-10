@@ -95,15 +95,12 @@
                 </div>
             </li>
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link" href="/peminjaman">
-                    <i class="fas fa-fw fa fa-folder"></i>
-                    <span>Data Peminjaman</span></a>
+            
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/pinjam">
                     <i class="fas fa-fw fa fa-folder"></i>
-                    <span>Data Peminjaman (2)</span></a>
+                    <span>Data Peminjaman</span></a>
             </li>
 
             <!-- Divider -->
