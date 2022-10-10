@@ -4,17 +4,16 @@
     Edit User
 @endsection
 @section('content')
-    <<!-- Begin Page Content -->
+    <!-- Begin Page Content -->
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Edit Data Buku Perpustakaan</h1>
-         
+          <h1 class="h3 mb-2 text-gray-800">Kelola Data Users</h1>
+
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Edit Data Buku Perpustakaan</h6>
                 <div class="card-body">
-                    <form action="{{url('admin/users/'{{$user->id}})}}" method="POST" class="d-inline">
+                    <form action="{{url('admin/'.$user->id)}}" method="POST" class="d-inline">
                         @csrf
                         @method ('put')
                         <div class="form-group">
@@ -31,7 +30,7 @@
                         </div>
                       <button type="submit" class="btn btn-primary btn-sm">Update</button>
                     </form>
-                    <a href="{{url('admin/users')}}" class="btn btn-warning btn-sm">Cancel</a>
+                    <a href="{{url('admin')}}" class="btn btn-warning btn-sm">Cancel</a>
                 </div>
             </div>
         </div>

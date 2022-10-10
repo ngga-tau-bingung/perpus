@@ -2,57 +2,56 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
     public function index()
     {
-        return view('admin.index', [
+        return view('admin.user.index', [
             'users'=>User::orderBy('id', 'DESC')->paginate(),
         ]);
     }
     public function create()
     {
-        return view('admin.create');
+        return view('admin.user.create');
     }
 
     public function store(Request $request)
     {
-        $validasi = $request->validate([
+        // return $request;
+        $request->validate([
             "name"=> "required",
+            'email' => ['required', Rule::unique('users', 'email')],
+            'password' => ['required', 'min:8', 'confirmed'],
             "role_as"=> "required"
         ]);
         User::create([
-    		'name' => $request->name,
-    		'role_as' => $request->role_as
-        ]);
- 
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role_as' => $request->role_as
+           ]);
+
     	return redirect()->route('admin.index')->with('success',"Create Successfully");
     }
 
-    public function show($id)
+    public function edit($id)
     {
-        $user = User::find($id);
-
-        return view('admin.edit', [
-        'user' => $user,
-        'name'=>Name::All(),
-        'role_as'=>Role_as::All(),
+        return view('admin.user.edit', [
+        'user' => User::find($id)
         ]);
     }
-  
-    public function update($id, Request $request)
+
+    public function update(Request $request, $id)
     {
         $validasi = $request->validate([
             "name"=> "required",
             "role_as"=> "required"
         ]);
-        $user = User::find($id);
-        $user->name = $request->name;
-        $user->role_as = $request->role_as;
-        $user->update();
+        User::where('id', $id)->update($validasi);
         return redirect()->route('admin.index')->with('success',"Updated Successfully");
     }
 

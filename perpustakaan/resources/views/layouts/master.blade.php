@@ -71,7 +71,7 @@
                 </a>
                 <div id="collapseone" class="collapse" aria-labelledby="headingone" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{url('admin/index')}}">Daftar User</a>
+                        <a class="collapse-item" href="{{url('admin')}}">Daftar User</a>
                     </div>
                 </div>
             </li>
@@ -95,7 +95,7 @@
                 </div>
             </li>
             <!-- Nav Item - Utilities Collapse Menu -->
-            
+
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/pinjam">
@@ -296,19 +296,6 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
@@ -398,7 +385,7 @@
     <!-- Page level plugins -->
     <script src="{{asset('sbadmin2/vendor/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('sbadmin2/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
-    
+
     <!-- script tambahan sweet alert, bukan dari bawaan sb-admin-2 -->
     <script src="{{asset('sbadmin2/js/swal.min.js')}}"></script>
 

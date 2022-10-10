@@ -4,13 +4,6 @@ use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PengarangController;
-use App\Http\Controllers\PenerbitController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\PeminjamanController;
-use App\Http\Controllers\BookController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\PinjamController;
 
 Route::view('/','welcome');
 
@@ -20,7 +13,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 /* route pengarang done */
 Route::prefix('pengarang')->middleware('auth')->group(function(){
-    Route::controller(PengarangController::class)->group(function(){
+    Route::controller(App\Http\Controllers\PengarangController::class)->group(function(){
         Route::get('/', 'index')->name('pengarang.index');
         Route::get('/create', 'create')->name('pengarang.create');
         Route::post('/create', 'store')->name('pengarang.store');
@@ -32,43 +25,67 @@ Route::prefix('pengarang')->middleware('auth')->group(function(){
 
 
 /* route penerbit done */
-Route::get('/penerbit', [PenerbitController::class, 'index'])->name('penerbit.index');
-Route::get('/penerbit/create', [PenerbitController::class, 'create'])->name('penerbit.create');
-Route::post('/penerbit/create', [PenerbitController::class, 'store'])->name('penerbit.store');
-Route::get('/penerbit/{id}/edit', [PenerbitController::class, 'edit'])->name('penerbit.edit');
-Route::put('/penerbit/{id}', [PenerbitController::class, 'update'])->name('penerbit.update');
-Route::delete('/penerbit/{id}', [PenerbitController::class, 'destroy'])->name('penerbit.destroy');
+Route::prefix('penerbit')->middleware('auth')->group(function(){
+    Route::controller(App\Http\Controllers\PenerbitController::class)->group(function(){
+        Route::get('/','index')->name('penerbit.index');
+        Route::get('/create','create')->name('penerbit.create');
+        Route::post('/create','store')->name('penerbit.store');
+        Route::get('/{id}/edit','edit')->name('penerbit.edit');
+        Route::put('/{id}','update')->name('penerbit.update');
+        Route::delete('/{id}','destroy')->name('penerbit.destroy');
+    });
+});
 
 //route category
-Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
-Route::post('/category/create', [CategoryController::class, 'store'])->name('category.store');
-Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
-Route::get('/category/{id}/edit', [CategoryController::class, 'show'])->name('category.show');
-Route::put('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
-Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+Route::prefix('category')->middleware('auth')->group(function(){
+    Route::controller(App\Http\Controllers\CategoryController::class)->group(function(){
+        Route::get('/','index')->name('category.index');
+        Route::post('/create','store')->name('category.store');
+        Route::get('/create','create')->name('category.create');
+        Route::get('/{id}/edit','show')->name('category.show');
+        Route::put('/{id}','update')->name('category.update');
+        Route::delete('/{id}','destroy')->name('category.destroy');
+    });
+});
 
 //route peminjaman
-Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman.index');
-Route::get('/userpinjam/{id}', [PeminjamanController::class, 'userpinjam'])->name('peminjaman.userpinjam');
-Route::post('/peminjaman/{book_id}', [PeminjamanController::class, 'meminjam'])->name('peminjaman.meminjam');
+Route::middleware('auth')->group(function(){
+    Route::controller(App\Http\Controllers\PeminjamanController::class)->group(function() {
+        Route::get('/peminjaman','index')->name('peminjaman.index');
+        Route::get('/userpinjam/{id}','userpinjam')->name('peminjaman.userpinjam');
+        Route::post('/peminjaman/{book_id}','meminjam')->name('peminjaman.meminjam');
+    });
+});
 
-//route Admin/User
-Route::get('/admin', [UserController::class, 'index'])->name('admin.index');
-Route::get('/admin/create', [UserController::class, 'create'])->name('admin.create');
-Route::post('/admin/create', [UserController::class, 'store'])->name('admin.store');
-Route::get('/admin/{id}/edit', [UserController::class, 'show'])->name('admin.show');
-Route::put('/admin/{id}', [UserController::class, 'update'])->name('admin.update');
-Route::delete('/admin/{id}', [UserController::class, 'destroy'])->name('admin.destroy');
+/* route admin/user */
+Route::prefix('admin')->middleware(['auth','admin'])->group(function(){
+    Route::controller(App\Http\Controllers\UserController::class)->group(function(){
+        Route::get('/', 'index')->name('admin.index');
+        Route::get('/create', 'create')->name('admin.create');
+        Route::post('', 'store')->name('admin.store');
+        Route::get('/{id}/edit', 'edit')->name('admin.edit');
+        Route::put('/{id}', 'update')->name('admin.update');
+        Route::delete('/{id}', 'destroy')->name('admin.destroy');
+    });
+});
 
 //route book
-Route::get('/book', [BookController::class, 'index'])->name('book.index');
-Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
-Route::post('/book/create', [BookController::class, 'store'])->name('book.store');
-Route::get('/book/{id}/edit', [BookController::class, 'show'])->name('book.show');
-Route::put('/book/{id}', [BookController::class, 'update'])->name('book.update');
-Route::delete('/book/{id}', [BookController::class, 'destroy'])->name('book.destroy');
+Route::prefix('book')->middleware('auth')->group(function(){
+    Route::controller(App\Http\Controllers\BookController::class)->group(function(){
+        Route::get('/','index')->name('book.index');
+        Route::get('/create','create')->name('book.create');
+        Route::post('/create','store')->name('book.store');
+        Route::get('/{id}/edit','show')->name('book.show');
+        Route::put('/{id}','update')->name('book.update');
+        Route::delete('/{id}','destroy')->name('book.destroy');
+    });
+});
 
 //route pinjam
-Route::get('/pinjam', [PinjamController::class, 'index'])->name('pinjam.index');
-Route::get('/userpinjam/{id}', [PinjamController::class, 'userpinjam'])->name('pinjam.userpinjam');
-Route::post('/pinjam/{book_id}', [PinjamController::class, 'meminjam'])->name('pinjam.meminjam');
+Route::middleware('auth')->group(function(){
+    Route::controller(App\Http\Controllers\PinjamController::class)->group(function(){
+        Route::get('/pinjam','index')->name('pinjam.index');
+        Route::get('/userpinjam/{id}','userpinjam')->name('pinjam.userpinjam');
+        Route::post('/pinjam/{book_id}','meminjam')->name('pinjam.meminjam');
+    });
+});
