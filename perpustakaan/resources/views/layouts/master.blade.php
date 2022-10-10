@@ -27,6 +27,8 @@
 
 <body id="page-top">
 
+    <!--sweetalert -->
+    @include('sweetalert::alert')
     <!-- Page Wrapper -->
     <div id="wrapper">
 

@@ -22,6 +22,7 @@ class PenerbitController extends Controller
     public function store(Request $request)
     {
         $validasi = $request->validate(["nama_penerbit"=> "required"]);
+
         Penerbit::create($validasi);
         return redirect()->route('penerbit.index')->with('success',"Created Successfully");
     }
@@ -45,6 +46,7 @@ class PenerbitController extends Controller
     public function destroy($id)
     {
         Penerbit::where('id', $id)->delete($id);
-        return back()->with('success',"Deleted Successfully");
+
+        return response()->json(['status' => 'Delete Successfully']);
     }
 }

@@ -59,7 +59,7 @@ class BookController extends Controller
  
         $book->save();
        
-        return redirect()->route('book.index');
+        return redirect()->route('book.index')->with('success',"Created Successfully");
     }
 
     public function show($id)
@@ -108,13 +108,13 @@ class BookController extends Controller
  
         $book->save();
        
-        return redirect()->route('book.index');
+        return redirect()->route('book.index')->with('success',"Updated Successfully");
     }
 
     public function destroy($id)
     {
         Book::where('id', $id)->delete($id);
-        return back()->with('success',"Deleted Successfully");
+        return response()->json(['status' => 'Delete Successfully']);
     }
 
 }

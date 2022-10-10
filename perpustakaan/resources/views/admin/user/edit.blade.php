@@ -14,9 +14,9 @@
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Edit Data Buku Perpustakaan</h6>
                 <div class="card-body">
-                    <form action="{{url('admin/users/'.$user->id)}}" method="post" class="d-inline">
-                        @method ("PUT")
+                    <form action="{{url('admin/users/'{{$user->id}})}}" method="POST" class="d-inline">
                         @csrf
+                        @method ('put')
                         <div class="form-group">
                             <label for="nama">Nama Lengkap</label>
                             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="nama" value="{{old('name', $user->name)}}">

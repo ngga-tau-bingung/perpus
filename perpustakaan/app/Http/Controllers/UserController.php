@@ -24,25 +24,26 @@ class UserController extends Controller
             "name"=> "required",
             "role_as"=> "required"
         ]);
-
-        $user = new User;
+        User::create([
+    		'name' => $request->name,
+    		'role_as' => $request->role_as
+        ]);
  
-        $user->name = $request->name;
-        $user->role_as = $request->role_as;
-        $user->save();
-       
-        User ::create($validasi);
-        return redirect()->route('admin.index')->with('success',"Create Successfully");
+    	return redirect()->route('admin.index')->with('success',"Create Successfully");
     }
 
-    public function edit($id)
+    public function show($id)
     {
+        $user = User::find($id);
+
         return view('admin.edit', [
-            'admin' => User::find($id),
+        'user' => $user,
+        'name'=>Name::All(),
+        'role_as'=>Role_as::All(),
         ]);
     }
   
-    public function update(Request $request, $id)
+    public function update($id, Request $request)
     {
         $validasi = $request->validate([
             "name"=> "required",
@@ -51,15 +52,13 @@ class UserController extends Controller
         $user = User::find($id);
         $user->name = $request->name;
         $user->role_as = $request->role_as;
-        $user->save();
-
-        User::where('id', $id)->update($validasi);
+        $user->update();
         return redirect()->route('admin.index')->with('success',"Updated Successfully");
     }
 
     public function destroy($id)
     {
-        User::where('id', $id)->delete($id);
+       User::where('id', $id)->delete($id);
         return back()->with('success',"Deleted Successfully");
     }
 }

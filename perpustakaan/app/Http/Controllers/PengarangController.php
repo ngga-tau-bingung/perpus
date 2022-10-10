@@ -46,6 +46,6 @@ class PengarangController extends Controller
     public function destroy($id)
     {
         Pengarang::where('id', $id)->delete($id);
-        return back()->with('success',"Deleted Successfully");
+        return response()->json(['status' => 'Delete Successfully']);
     }
 }

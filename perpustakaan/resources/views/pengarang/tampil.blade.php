@@ -10,7 +10,57 @@
 			$("#example1").DataTable();
 		});
 		</script>
+     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+     <script>
+         $(document).ready(function () {
+ 
+             $.ajaxSetup({
+                 headers: {
+                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                 }
+             });
+ 
+             $('.btndelete').click(function (e) {
+                 e.preventDefault();
+ 
+                 var deleteid = $(this).closest("tr").find('.delete_id').val();
+ 
+                 swal({
+                         title: "Apakah anda yakin?",
+                         text: "Setelah dihapus, Anda tidak dapat memulihkan data ini lagi!",
+                         icon: "warning",
+                         buttons: true,
+                         dangerMode: true,
+                     })
+                     .then((willDelete) => {
+                         if (willDelete) {
+ 
+                             var data = {
+                                 "_token": $('input[name=_token]').val(),
+                                 'id': deleteid,
+                             };
+                             $.ajax({
+                                 type: "DELETE",
+                                 url: 'pengarang/' + deleteid,
+                                 data: data,
+                                 success: function (response) {
+                                     swal(response.status, {
+                                             icon: "success",
+                                         })
+                                         .then((result) => {
+                                             location.reload();
+                                         });
+                                 }
+                             });
+                         }
+                     });
+             });
+ 
+         });
+ 
+     </script>
+ 
 @endpush
 @push('style')
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.css"/>
@@ -47,15 +97,16 @@
                       <tbody>
                         @forelse ($pengarangs as $key => $pengarang)
                              <tr>
+                              <input type="hidden" class="delete_id" value="{{ $pengarang->id }}">
                               <td>{{$key + 1}}</td>
                               <td>{{$pengarang->id}}</td>
                               <td>{{$pengarang->nama_pengarang}}</td>
                               <td class="text-center">
                                   <a href="{{url('pengarang/'.$pengarang->id.'/edit')}}" class="btn btn-warning btn-sm">Edit</a>
-                                  <form action="{{url('pengarang/'.$pengarang->id)}}" method="POST" class="d-inline">
-                                      @method('delete')
-                                      @csrf
-                                      <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are You Sure ?')">Delete</button>
+                                  <form action="{{route('pengarang.destroy', $pengarang->id)}}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('delete')
+                                      <button class="btn btn-danger btn-sm btndelete">Hapus</button>
                                   </form>
                               </td>
                               </tr>

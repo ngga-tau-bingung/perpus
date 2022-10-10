@@ -38,7 +38,7 @@
                   <tbody>
                     @forelse ($users as $key => $item)
                     @php
-
+                    
                        $pinjaman_aktif = App\Models\Peminjaman::where('user_id', $item->id)->count();
                     @endphp
                         <tr>
@@ -51,7 +51,7 @@
                           </td>
                         </tr>
                       @empty
-                          <h1>Data Peminjaman Kosong</h1>
+                          <h5>Data Peminjaman Kosong</h5>
                       @endforelse
                   </tbody>
                 </table>

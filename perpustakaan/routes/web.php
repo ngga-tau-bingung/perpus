@@ -49,16 +49,14 @@ Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('c
 
 //route peminjaman
 Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman.index');
-Route::post('/peminjaman/create', [PeminjamanController::class, 'store'])->name('peminjaman.store');
-Route::get('/peminjaman/{id}', [PeminjamanController::class, 'show'])->name('peminjaman.show');
-Route::put('/peminjaman/{id}', [PeminjamanController::class, 'update'])->name('peminjaman.update');
-Route::delete('/peminjaman/{id}', [PeminjamanController::class, 'destroy'])->name('peminjaman.destroy');
+Route::get('/userpinjam/{id}', [PeminjamanController::class, 'userpinjam'])->name('peminjaman.userpinjam');
+Route::post('/peminjaman/{book_id}', [PeminjamanController::class, 'meminjam'])->name('peminjaman.meminjam');
 
-//route Admin
+//route Admin/User
 Route::get('/admin', [UserController::class, 'index'])->name('admin.index');
 Route::get('/admin/create', [UserController::class, 'create'])->name('admin.create');
 Route::post('/admin/create', [UserController::class, 'store'])->name('admin.store');
-Route::get('/admin/{id}/edit', [UserController::class, 'edit'])->name('admin.edit');
+Route::get('/admin/{id}/edit', [UserController::class, 'show'])->name('admin.show');
 Route::put('/admin/{id}', [UserController::class, 'update'])->name('admin.update');
 Route::delete('/admin/{id}', [UserController::class, 'destroy'])->name('admin.destroy');
 
