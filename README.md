@@ -12,7 +12,7 @@
  - 
 
 ## Link Deploy Hosting :
- - 
+ - http://kel4laravel38.sanbercodeapp.com
 
 ## ERD :
  ![finallll](https://user-images.githubusercontent.com/86998229/194894833-ca850da8-7f2e-4cd6-b103-d39e6d4bfcac.png)
